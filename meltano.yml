@@ -1,0 +1,24 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: f50b9cb6-ff58-4c5a-8047-7c2a51ea2153
+plugins:
+  extractors:
+  - name: mixpanel_custom
+    namespace: mixpanel_custom
+    pip_url: -e custom_plugins/mixpanel-custom
+    executable: tap-mixpanel-custom
+    capabilities:
+    - state
+    - catalog
+    - discover
+    config:
+      api_secret: $TAP_MIXPANEL_API_KEY
+      start_date: '2017-08-01T00:00:00Z'
+      project_timezone: US/Eastern
+      date_window_size: '30'
+      attribution_window: '5'
+      user_agent: tap-mixpanel ryan@fixdapp.com
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
