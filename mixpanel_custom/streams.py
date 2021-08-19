@@ -37,6 +37,7 @@ class CohortMembersStream(mixpanel_customStream):
         # th.Property("status", th.StringType),
         # th.Property("computed_at", th.StringType)
     ).to_dict()
+    LOGGER.info(f'schema is: {schema}')
 
 
 class CohortsStream(mixpanel_customStream):
