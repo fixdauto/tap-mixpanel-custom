@@ -27,8 +27,8 @@ class CohortMembersStream(mixpanel_customStream):
     # schema_filepath = SCHEMAS_DIR / "users.json"
     schema = th.PropertiesList(
         th.Property("distinct_id", th.StringType),
-        th.Property("email", th.StringType),
-        th.Property("properties", th.StringType)
+        th.Property("email", th.StringType)
+        #th.Property("properties", th.StringType)
         # th.Property("results", th.StringType),
         # th.Property("page", th.StringType),
         # th.Property("session_id", th.StringType),
