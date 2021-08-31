@@ -43,17 +43,10 @@ class CohortMembersStream(RESTStream):
 
     records_jsonpath = "$[*]"  # Or override `parse_response`.
 
-
-    @property
-    def authenticator(self) -> mixpanel_customAuthenticator:
-        """Return a new authenticator object."""
-        return mixpanel_customAuthenticator.create_for_stream(self)
-
     @property
     def http_headers(self) -> dict:
         """Return the http headers needed."""
-        #store sensitive authorization key in a .env instead of in the code
-        headers = {'Authorization': 'Basic NTNiMjcyODNjNjhmZDk2Yjc1N2M5YjU1N2Q5NTljMjM6'}
+        headers = {'Authorization': self.config['api_secret']}
         return headers
     
     @property
@@ -192,14 +185,9 @@ class CohortsStream(RESTStream):
     next_page_token_jsonpath = "$.next_page"  # Or override `get_next_page_token`.
 
     @property
-    def authenticator(self) -> mixpanel_customAuthenticator:
-        """Return a new authenticator object."""
-        return mixpanel_customAuthenticator.create_for_stream(self)
-
-    @property
     def http_headers(self) -> dict:
         """Return the http headers needed."""
-        headers = {'Authorization': 'Basic NTNiMjcyODNjNjhmZDk2Yjc1N2M5YjU1N2Q5NTljMjM6'}
+        headers = {'Authorization': self.config['api_secret']}
         return headers
 
     def get_next_page_token(
