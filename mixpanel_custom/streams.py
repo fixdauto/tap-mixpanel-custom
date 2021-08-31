@@ -11,7 +11,6 @@ from singer_sdk import typing as th  # JSON Schema typing helpers
 
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.streams import RESTStream
-from mixpanel_custom.auth import mixpanel_customAuthenticator
 import mixpanel_custom.tap
 
 import singer
