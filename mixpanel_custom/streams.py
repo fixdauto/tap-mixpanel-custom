@@ -90,7 +90,6 @@ class CohortMembersStream(RESTStream):
         http_method = self.rest_method
         url: str = self.get_url(context)
         params: dict = self.get_url_params(context, next_page_token, session_id, cohortID)
-        LOGGER.info(f'params are: {params}')
         request_data = self.prepare_request_payload(context, next_page_token)
         headers = self.http_headers
 
