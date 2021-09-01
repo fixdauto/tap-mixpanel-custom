@@ -23,7 +23,7 @@ class Tapmixpanel_custom(Tap):
     name = "mixpanel_custom"
 
     config_jsonschema = th.PropertiesList(
-        th.Property("auth_token", th.StringType, required=True),
+        th.Property("auth_token", th.StringType, required=False),
         th.Property("project_ids", th.ArrayType(th.StringType), required=False),
         th.Property("start_date", th.DateTimeType),
         th.Property("api_url", th.StringType, default="https://mixpanel.com/api/2.0/"),
