@@ -17,11 +17,7 @@ import singer
 
 LOGGER = singer.get_logger()
 
-# TODO: Delete this is if not using json files for schema definition
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
-# TODO: - Override `UsersStream` and `GroupsStream` with your own stream definition.
-#       - Copy-paste as many times as needed to create multiple stream types.
-
 
 class CohortMembersStream(RESTStream):
     """Define custom stream."""
@@ -29,14 +25,7 @@ class CohortMembersStream(RESTStream):
     path = ""
     primary_keys = ["distinct_id", "cohort_id"]
     replication_key = None
-    # Optionally, you may also use `schema_filepath` in place of `schema`:
-    # schema_filepath = SCHEMAS_DIR / "users.json"
-    schema = th.PropertiesList(
-        th.Property("distinct_id", th.StringType),
-        th.Property("email", th.StringType),
-        th.Property("cohort_id", th.IntegerType, required=True)
-    ).to_dict()
-
+    schema_filepath = SCHEMAS_DIR / "members.json"
 
     url_base = 'https://mixpanel.com/api/2.0/engage'
 
@@ -166,16 +155,7 @@ class CohortsStream(RESTStream):
     path = "cohorts/list"
     primary_keys = ["id"]
     replication_key = None
-    schema = th.PropertiesList(
-        th.Property("project_id", th.IntegerType),
-        th.Property("id", th.IntegerType),
-        th.Property("description", th.StringType),
-        th.Property("count", th.IntegerType),
-        th.Property("is_visible", th.IntegerType),
-        th.Property("created", th.StringType),
-        th.Property("name", th.StringType)
-    ).to_dict()
-
+    schema_filepath = SCHEMAS_DIR / "cohorts.json"
 
     url_base = "https://mixpanel.com/api/2.0/"
 
