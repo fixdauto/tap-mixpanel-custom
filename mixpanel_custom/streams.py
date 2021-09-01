@@ -36,6 +36,7 @@ class CohortMembersStream(RESTStream):
     def http_headers(self) -> dict:
         """Return the http headers needed."""
         api_secret = self.config['api_secret']
+        #Mixpanel API key must be encoded to meet the format expected by the SDK
         headers = {'Authorization': 'Basic {}'.format(
             str(base64.urlsafe_b64encode(api_secret.encode("utf-8")), "utf-8"))}
         return headers
@@ -169,6 +170,7 @@ class CohortsStream(RESTStream):
     def http_headers(self) -> dict:
         """Return the http headers needed."""
         api_secret = self.config['api_secret']
+        #Mixpanel API key must be encoded to meet the format expected by the SDK
         headers = {'Authorization': 'Basic {}'.format(
             str(base64.urlsafe_b64encode(api_secret.encode("utf-8")), "utf-8"))}
         return headers
