@@ -7,6 +7,9 @@
     },
     "distinct_id": {
       "type": ["null", "string"]
+    },
+    "email": {
+      "type": ["null", "string"]
     }
   }
 }
