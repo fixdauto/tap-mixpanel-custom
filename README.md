@@ -1,12 +1,12 @@
 # mixpanel_custom
 
-`mixpanel_custom` is a Singer tap for mixpanel_custom.
+`mixpanel_custom` is a Singer tap for Mixpanel.
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
-## Installation
+It uses the Mixpanel Engage API to fetch cohort and cohort member data.
 
-- [ ] `Developer TODO:` Update the below as needed to correctly describe the install procedure. For instance, if you do not have a PyPi repo, or if you want users to directly install from your git repo, you can modify this step as appropriate.
+## Installation
 
 ```bash
 pipx install mixpanel_custom
@@ -16,7 +16,17 @@ pipx install mixpanel_custom
 
 ### Accepted Config Options
 
-- [ ] `Developer TODO:` Provide a list of config options accepted by the tap.
+```bash
+{
+  "api_secret": "YOUR_API_SECRET"
+  "start_date": "rfc3339_date_string"
+  "project_timezone": "US/Eastern"
+  "date_window_size": "30"
+  "attribution_window": "5"
+  "user_agent": "tap-mixpanel <api_user_email@your_company.com>"
+  "cohortIDs": ["List of cohort IDs"]
+}
+```
 
 A full list of supported settings and capabilities for this
 tap is available by running:
@@ -24,10 +34,6 @@ tap is available by running:
 ```bash
 mixpanel_custom --about
 ```
-
-### Source Authentication and Authorization
-
-- [ ] `Developer TODO:` If your tap requires special access on the source system, or any special authentication requirements, provide those here.
 
 ## Usage
 
@@ -40,10 +46,6 @@ mixpanel_custom --version
 mixpanel_custom --help
 mixpanel_custom --config CONFIG --discover > ./catalog.json
 ```
-
-## Developer Resources
-
-- [ ] `Developer TODO:` As a first step, scan the entire project for the text "`TODO:`" and complete any recommended steps, deleting the "TODO" references once completed.
 
 ### Initialize your Development Environment
 
@@ -96,5 +98,4 @@ meltano elt mixpanel_custom target-jsonl
 
 ### SDK Dev Guide
 
-See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to 
-develop your own taps and targets.
+See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to develop your own taps and targets.
