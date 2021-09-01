@@ -1,5 +1,6 @@
 """Stream type classes for mixpanel_custom."""
 
+import base64
 import requests
 from pathlib import Path
 from typing import Any, Dict, Optional, Union, List, Iterable, cast
@@ -34,7 +35,9 @@ class CohortMembersStream(RESTStream):
     @property
     def http_headers(self) -> dict:
         """Return the http headers needed."""
-        headers = {'Authorization': self.config['api_secret']}
+        api_secret = self.config['api_secret']
+        headers = {'Authorization': 'Basic {}'.format(
+            str(base64.urlsafe_b64encode(api_secret.encode("utf-8")), "utf-8"))}
         return headers
     
     @property
