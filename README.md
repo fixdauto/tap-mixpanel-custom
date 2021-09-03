@@ -69,33 +69,6 @@ You can also test the `mixpanel_custom` CLI interface directly using `poetry run
 poetry run mixpanel_custom --help
 ```
 
-### Testing with [Meltano](https://www.meltano.com)
-
-_**Note:** This tap will work in any Singer environment and does not require Meltano.
-Examples here are for convenience and to streamline end-to-end orchestration scenarios._
-
-Your project comes with a custom `meltano.yml` project file already created. Open the `meltano.yml` and follow any _"TODO"_ items listed in
-the file.
-
-Next, install Meltano (if you haven't already) and any needed plugins:
-
-```bash
-# Install meltano
-pipx install meltano
-# Initialize meltano within this directory
-cd mixpanel_custom
-meltano install
-```
-
-Now you can test and orchestrate using Meltano:
-
-```bash
-# Test invocation:
-meltano invoke mixpanel_custom --version
-# OR run a test `elt` pipeline:
-meltano elt mixpanel_custom target-jsonl
-```
-
 ### SDK Dev Guide
 
 See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to develop your own taps and targets.
