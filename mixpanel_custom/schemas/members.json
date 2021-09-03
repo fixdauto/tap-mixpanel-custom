@@ -1,0 +1,15 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "cohort_id": {
+      "type": ["null", "integer"]
+    },
+    "distinct_id": {
+      "type": ["null", "string"]
+    },
+    "email": {
+      "type": ["null", "string"]
+    }
+  }
+}

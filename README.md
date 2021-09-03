@@ -1,12 +1,12 @@
 # mixpanel_custom
 
-`mixpanel_custom` is a Singer tap for mixpanel_custom.
+`mixpanel_custom` is a Singer tap for Mixpanel.
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
-## Installation
+It uses the Mixpanel Engage API to fetch cohort and cohort member data.
 
-- [ ] `Developer TODO:` Update the below as needed to correctly describe the install procedure. For instance, if you do not have a PyPi repo, or if you want users to directly install from your git repo, you can modify this step as appropriate.
+## Installation
 
 ```bash
 pipx install mixpanel_custom
@@ -16,7 +16,17 @@ pipx install mixpanel_custom
 
 ### Accepted Config Options
 
-- [ ] `Developer TODO:` Provide a list of config options accepted by the tap.
+```bash
+{
+  "api_secret": "YOUR_API_SECRET"
+  "start_date": "rfc3339_date_string"
+  "project_timezone": "US/Eastern"
+  "date_window_size": "30"
+  "attribution_window": "5"
+  "user_agent": "tap-mixpanel <api_user_email@your_company.com>"
+  "cohortIDs": ["List of cohort IDs"]
+}
+```
 
 A full list of supported settings and capabilities for this
 tap is available by running:
@@ -24,10 +34,6 @@ tap is available by running:
 ```bash
 mixpanel_custom --about
 ```
-
-### Source Authentication and Authorization
-
-- [ ] `Developer TODO:` If your tap requires special access on the source system, or any special authentication requirements, provide those here.
 
 ## Usage
 
@@ -40,10 +46,6 @@ mixpanel_custom --version
 mixpanel_custom --help
 mixpanel_custom --config CONFIG --discover > ./catalog.json
 ```
-
-## Developer Resources
-
-- [ ] `Developer TODO:` As a first step, scan the entire project for the text "`TODO:`" and complete any recommended steps, deleting the "TODO" references once completed.
 
 ### Initialize your Development Environment
 
@@ -67,34 +69,6 @@ You can also test the `mixpanel_custom` CLI interface directly using `poetry run
 poetry run mixpanel_custom --help
 ```
 
-### Testing with [Meltano](https://www.meltano.com)
-
-_**Note:** This tap will work in any Singer environment and does not require Meltano.
-Examples here are for convenience and to streamline end-to-end orchestration scenarios._
-
-Your project comes with a custom `meltano.yml` project file already created. Open the `meltano.yml` and follow any _"TODO"_ items listed in
-the file.
-
-Next, install Meltano (if you haven't already) and any needed plugins:
-
-```bash
-# Install meltano
-pipx install meltano
-# Initialize meltano within this directory
-cd mixpanel_custom
-meltano install
-```
-
-Now you can test and orchestrate using Meltano:
-
-```bash
-# Test invocation:
-meltano invoke mixpanel_custom --version
-# OR run a test `elt` pipeline:
-meltano elt mixpanel_custom target-jsonl
-```
-
 ### SDK Dev Guide
 
-See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to 
-develop your own taps and targets.
+See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to develop your own taps and targets.
